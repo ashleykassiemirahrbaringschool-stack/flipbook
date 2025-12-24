@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Digital Scrapbook: Group 1</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+  background-size: 400% 400%;
+  animation: glowBG 8s ease infinite;
+  font-family: Arial, sans-serif;
+}
+
+@keyframes glowBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.book {
+  width: 900px;
+  height: 550px;
+  position: relative;
+  perspective: 2000px;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.9);
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  background: black;
+}
+
+.page.flipped {
+  transform: rotateY(-180deg);
+}
+
+.controls {
+  position: absolute;
+  bottom: -70px;
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  padding: 10px 18px;
+  margin: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #ff9a9e;
+  color: white;
+}
+
+button:hover {
+  background: #ff6f91;
+}
+
+.page-number {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  font-size: 14px;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="book">
+
+  <div class="page">
+    <img src="pic1.jpg">
+    <div class="page-number">1 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic2.jpg">
+    <div class="page-number">2 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic3.jpg">
+    <div class="page-number">3 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic4.jpg">
+    <div class="page-number">4 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic5.jpg">
+    <div class="page-number">5 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic6.jpg">
+    <div class="page-number">6 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic7.jpg">
+    <div class="page-number">7 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic8.jpg">
+    <div class="page-number">8 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic9.jpg">
+    <div class="page-number">9 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic10.jpg">
+    <div class="page-number">10 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic11.jpg">
+    <div class="page-number">11 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic12.jpg">
+    <div class="page-number">12 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic13.jpg">
+    <div class="page-number">13 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic14.jpg">
+    <div class="page-number">14 / 15</div>
+  </div>
+
+  <div class="page">
+    <img src="pic15.jpg">
+    <div class="page-number">15 / 15</div>
+  </div>
+
+  <div class="controls">
+    <button onclick="prev()">Previous</button>
+    <button onclick="next()">Next</button>
+  </div>
+
+</div>
+
+<script>
+const pages = document.querySelectorAll('.page');
+let current = 0;
+
+pages.forEach((page, index) => {
+  page.style.zIndex = pages.length - index;
+});
+
+function next() {
+  if (current < pages.length) {
+    pages[current].classList.add('flipped');
+    current++;
+  }
+}
+
+function prev() {
+  if (current > 0) {
+    current--;
+    pages[current].classList.remove('flipped');
+  }
+}
+</script>
+
+</body>
+</html>
